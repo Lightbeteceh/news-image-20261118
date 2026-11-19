@@ -10,9 +10,11 @@ A program that writes one image summing up the world news of
 
 The entry image is held in this repo as `entry.png`. It is rendered offline
 by `render.py` (Python 3 + Pillow, no network) from `stories.json` — a
-newspaper front page: masthead, lead story, 30 headlines across 6 continents,
-and a world index panel. `main.py` copies `entry.png` to `/output/entry.png`
-byte-for-byte.
+"Collage Zine": tilted, overlapping zine-style cards with washi tape, a
+dusk-skyline photo card, and a lead card, covering 36 headlines across
+6 continents. Fonts (Merriweather, OFL) are bundled in `fonts/`, so
+rendering needs no system fonts. `main.py` copies `entry.png` to
+`/output/entry.png` byte-for-byte.
 
 ```sh
 python3 render.py   # rebuild entry.png from stories.json (offline)
@@ -31,5 +33,12 @@ python3 main.py     # write /output/entry.png (deterministic, no network)
 FINAL (19 Nov 2026, ~07:30 WIB): the full news day of Wednesday 18 November
 2026 (00:00–24:00 UTC) is covered — 36 stories across 6 continents, lead
 story the Trump–Xi–Putin APEC opening in Shenzhen. Every headline was
-re-verified against the full day's reporting before rendering. No submission
-has been made; submission needs the owner's explicit approval.
+re-verified against the full day's reporting before rendering.
+
+VISUAL (19 Nov 2026, ~09:00 WIB): the owner picked "Collage Zine" from
+29 variants built in the session (batch 4, news3 06-collage) — tilted
+zine cards, washi tape, dusk-skyline photo card. `render.py` now renders
+that design from `stories.json` (deterministic, byte-identical to the
+picked variant, sha256 `6da1faff…`); `entry.png` is 359,979 bytes.
+
+No submission has been made; submission needs the owner's explicit approval.
