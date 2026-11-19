@@ -4,21 +4,21 @@
 [![rank](https://make.fun/badge/news-image-20261118/Lightbeteceh/news-image-20261118/rank.svg)](https://make.fun/bounty/news-image-20261118/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 [![reward](https://make.fun/badge/news-image-20261118/Lightbeteceh/news-image-20261118/reward.svg)](https://make.fun/bounty/news-image-20261118?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261118)
 
-Entry for the [make.fun news-image-20261118 bounty](https://make.fun/bounty/news-image-20261118)
+An entry for the [make.fun news-image-20261118 bounty](https://make.fun/bounty/news-image-20261118)
 ("Sum up 18 November's world news in one image", $250 USDC, 50 places paid).
 
-A program that writes one image summing up the world news of
-**Wednesday 18 November 2026** to `/output/entry.png`.
+It sums up the world news of **Wednesday 18 November 2026** in a single
+picture: 36 stories from 6 continents, led by the Trump–Xi–Putin opening
+of the APEC summit in Shenzhen.
 
 ## How it works
 
-The entry image is held in this repo as `entry.png`. It is rendered offline
-by `render.py` (Python 3 + Pillow, no network) from `stories.json` — a
-"Collage Zine": tilted, overlapping zine-style cards with washi tape, a
-dusk-skyline photo card, and a lead card, covering 36 headlines across
-6 continents. Fonts (Merriweather, OFL) are bundled in `fonts/`, so
-rendering needs no system fonts. `main.py` copies `entry.png` to
-`/output/entry.png` byte-for-byte.
+`render.py` (Python 3 + Pillow, offline) draws the picture from
+`stories.json` and saves it as `entry.png`. The design is a zine collage:
+tilted paper cards held by washi tape, a dusk-skyline photo card, and one
+card per continent. The Merriweather typefaces are bundled in `fonts/`, so
+rendering needs no system fonts and no network. `main.py` then copies
+`entry.png` to `/output/entry.png` byte-for-byte.
 
 ```sh
 python3 render.py   # rebuild entry.png from stories.json (offline)
@@ -34,15 +34,10 @@ python3 main.py     # write /output/entry.png (deterministic, no network)
 
 ## Status
 
-FINAL (19 Nov 2026, ~07:30 WIB): the full news day of Wednesday 18 November
-2026 (00:00–24:00 UTC) is covered — 36 stories across 6 continents, lead
-story the Trump–Xi–Putin APEC opening in Shenzhen. Every headline was
-re-verified against the full day's reporting before rendering.
-
-VISUAL (19 Nov 2026, ~09:00 WIB): the owner picked "Collage Zine" from
-29 variants built in the session (batch 4, news3 06-collage) — tilted
-zine cards, washi tape, dusk-skyline photo card. `render.py` now renders
-that design from `stories.json` (deterministic, byte-identical to the
-picked variant, sha256 `6da1faff…`); `entry.png` is 359,979 bytes.
-
-No submission has been made; submission needs the owner's explicit approval.
+FINAL (19 Nov 2026): the full news day of Wednesday 18 November 2026
+(00:00–24:00 UTC) is covered — 36 stories across 6 continents, lead story
+the Trump–Xi–Putin APEC opening in Shenzhen. Every headline was re-verified
+against the full day's reporting before rendering. The visual is the
+"Collage Zine" design picked by the owner from 29 variants built in the
+session. Submitted to make.fun on 19 Nov 2026 (round 1); see `EVIDENCE/`
+in the build folder for the submission record.

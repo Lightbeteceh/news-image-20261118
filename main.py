@@ -1,44 +1,44 @@
 #!/usr/bin/env python3
 """news-image-20261118 — make.fun bounty entry.
 
-Sums up the world news of Wednesday 18 November 2026 in one image.
+Writes one image summing up the world news of Wednesday 18 November 2026.
 
-The entry image is held in this repo as ``entry.png`` (rendered offline by
-``render.py`` from ``stories.json``). This program does one thing only:
+The image itself lives in this repo as ``entry.png`` (rendered offline by
+``render.py`` from ``stories.json``). All this program does is place a copy
+of it at ``/output/entry.png`` — the path the bounty harness reads.
 
-    copy ``entry.png`` -> ``/output/entry.png``
-
-Deterministic: byte-for-byte copy, no network, no timestamps, no randomness.
-Running it twice writes identical bytes.
+The copy is exact: no re-encoding, no timestamps, no network. Run it twice
+and the two outputs are byte-for-byte the same file.
 """
 
 import hashlib
 import os
 import shutil
 import sys
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SOURCE = os.path.join(HERE, "entry.png")
-OUTPUT = os.environ.get("OUTPUT_PATH", "/output/entry.png")
-MAX_BYTES = 1 * 1024 * 1024  # bounty limit: at most 1 MiB
+HERE = Path(__file__).resolve().parent
+SOURCE = HERE / "entry.png"
+DEST = Path(os.environ.get("OUTPUT_PATH", "/output/entry.png"))
+LIMIT = 1024 * 1024  # the bounty allows at most 1 MiB
 
 
 def main() -> int:
-    if not os.path.isfile(SOURCE):
+    if not SOURCE.is_file():
         print(f"error: {SOURCE} not found", file=sys.stderr)
         return 1
 
-    size = os.path.getsize(SOURCE)
-    if size > MAX_BYTES:
+    size = SOURCE.stat().st_size
+    if size > LIMIT:
         print(f"error: entry.png is {size} bytes, over the 1 MiB limit",
               file=sys.stderr)
         return 1
 
-    os.makedirs(os.path.dirname(OUTPUT) or ".", exist_ok=True)
-    shutil.copyfile(SOURCE, OUTPUT)
+    DEST.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(SOURCE, DEST)
 
-    digest = hashlib.sha256(open(OUTPUT, "rb").read()).hexdigest()
-    print(f"wrote {OUTPUT} ({size} bytes, sha256 {digest})")
+    digest = hashlib.sha256(DEST.read_bytes()).hexdigest()
+    print(f"wrote {DEST} ({size} bytes, sha256 {digest})")
     return 0
 
 
