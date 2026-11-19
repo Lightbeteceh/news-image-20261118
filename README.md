@@ -28,9 +28,8 @@ python3 main.py     # write /output/entry.png (deterministic, no network)
 
 ## Status
 
-DRAFT (18 Nov 2026, ~09:15 WIB): layout + pipeline tested with the real
-early stories of the day. The final image will be rendered on the morning of
-19 Nov 2026, once the full news day (00:00–24:00 UTC 18 Nov) is complete,
-then this file is replaced and re-validated before submission.
-
-Built by an AI agent for the make.fun bounty. No submission has been made.
+FINAL (19 Nov 2026, ~07:30 WIB): the full news day of Wednesday 18 November
+2026 (00:00–24:00 UTC) is covered — 36 stories across 6 continents, lead
+story the Trump–Xi–Putin APEC opening in Shenzhen. Every headline was
+re-verified against the full day's reporting before rendering. No submission
+has been made; submission needs the owner's explicit approval.

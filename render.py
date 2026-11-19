@@ -105,7 +105,7 @@ def main():
     col_w = (x1 - x0 - 24) // 2
     row_h = 196
     f_sec = font(SANS_BOLD, 15)
-    f_head = font(SERIF, 15)
+    f_head = font(SERIF, 14)
     for i, sec in enumerate(sections[:6]):
         cx = x0 + (i % 2) * (col_w + 24)
         cy = y + (i // 2) * row_h
@@ -113,9 +113,9 @@ def main():
         d.text((cx + 8, cy + 2), sec["continent"].upper(), font=f_sec,
                fill=BG)
         hy = cy + 28
-        for hl in sec["headlines"][:5]:
+        for hl in sec["headlines"][:6]:
             hy = draw_wrapped(d, cx, hy, "\u2022  " + hl, f_head, col_w - 4,
-                              leading=2)
+                              leading=1)
             hy += 3
             if hy > cy + row_h - 18:
                 break
